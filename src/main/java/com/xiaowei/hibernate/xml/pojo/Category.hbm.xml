@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.xiaowei.hibernate.xml.pojo.Category" table="t_category">
+        <id name="id" column="id" >
+            <generator class="native" />
+        </id>
+        <property name="title" column="title" />
+        <set name="adverts" table="link_category_advert">
+            <key column="category" foreign-key="fk_advert_category"></key>
+            <many-to-many class="com.xiaowei.hibernate.xml.pojo.Advert" column="advert" foreign-key="fk_category_advert"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
